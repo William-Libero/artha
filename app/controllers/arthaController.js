@@ -10,13 +10,20 @@ class arthaController{
             autenticadas: '/dashboard*',
             cadastro: '/cadastro',
             login: '/login',
-            dashboard: '/dashboard/:id'
+            dashboard: '/dashboard/:id',
+            register: '/register',
         }
     }
 
     cadastroAcesso(){
         return (req, resp) => {
             resp.marko(templates.artha.cadastro)
+        }
+    }
+
+    registerAcesso(){
+        return (req, resp) => {
+            resp.marko(templates.artha.register)
         }
     }
 

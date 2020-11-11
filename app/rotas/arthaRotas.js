@@ -16,9 +16,16 @@ module.exports = (app) => {
     .get(ArthaController.cadastroAcesso())
     .post(ArthaController.cadastro());
 
+
+    app.route(rotasArtha.register)
+    .get(ArthaController.registerAcesso());
+    // .post(ArthaController.register());
+
     app.route(rotasArtha.login)
     .get(ArthaController.loginAcesso())
     .post(ArthaController.efetuaLogin());
+
+    // app.route(rotasArtha.register, ArthaController.redirecionaUserDepoisDoLogin());
 
     app.get(rotasArtha.dashboard, ArthaController.redirecionaUserDepoisDoLogin());
 }

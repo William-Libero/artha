@@ -7,4 +7,6 @@ module.exports = (app) => {
     app.get(rotasBase.home, BaseController.home());
 
     app.get(rotasBase.logout, BaseController.logout());
+
+    
 }
