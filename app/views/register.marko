@@ -26,6 +26,23 @@
   #medico-form {
     display: none;
   }
+
+  .second-pass-user {
+    display: none;
+  }
+
+  .second-pass-doctor {
+    display: none;
+  }
+
+  .third-pass-doctor {
+    display: none;
+  }
+
+  .btn-back {
+    background-color: red;
+    border-color: red;
+  }
 </style>
 
 <body class="bg-gradient-primary">
@@ -38,8 +55,8 @@
         <div class="row">
           <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
           <div class="col-lg-7">
-            
-            <div class="p-5">
+
+            <div class="p-2">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Criar uma conta!</h1>
               </div>
@@ -47,8 +64,8 @@
               <div class="form-group row justify-content-center">
                 <div class="form-check col-2">
                   <label class="form-check-label paciente-check" for="paciente-check1">
-                    <input class="form-check-input paciente-check" type="radio" name="exampleRadios" id="paciente-check1" checked
-                      value="option1">
+                    <input class="form-check-input paciente-check" type="radio" name="exampleRadios"
+                      id="paciente-check1" checked value="option1">
                     Paciente
                   </label>
                 </div>
@@ -64,55 +81,49 @@
               <div id="paciente-form">
                 <form class="user">
                   <h1>PACIENTE</h1>
-                  <div class="firs-pass-user">
+                  <div class="first-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Nome">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Nome">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                          placeholder="Sobrenome">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="Sobrenome">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-12">
-                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Email">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Email">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="CPF">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="CPF">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="RG">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="RG">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="date" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Dt Nasc">
+                        <input type="date" class="form-control " id="exampleFirstName" placeholder="Dt Nasc">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                          placeholder="TEL">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="TEL">
                       </div>
                     </div>
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" class="btn btn-primary btn-user btn-block">
+                        <button id="first-next-user" class="btn btn-primary btn-user btn-block">
                           Próximo
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
+
                   <div class="second-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                          placeholder="CEP">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="CEP">
                       </div>
                       <div class="col-sm-6">
                         <p>Estado<span data-js="UF"></span></p>
@@ -143,171 +154,187 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Nome Contato">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Nome Contato">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                          placeholder="Tel Contato">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="Tel Contato">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Senha">
+                        <input type="password" class="form-control " id="exampleFirstName" placeholder="Senha">
                       </div>
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="exampleFirstName"
+                        <input type="password" class="form-control " id="exampleFirstName"
                           placeholder="Confirmar Senha">
                       </div>
                     </div>
-                    <a href="login.html" class="btn btn-primary btn-user btn-block">
-                      Registrar Conta
-                    </a>
-                    <hr>
+                    <div class="form-group row justify-content-center">
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" id="first-back-user" class="btn btn-primary btn-user btn-block btn-back">
+                          Voltar
+                        </a>
+                      </div>
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" class="btn btn-primary btn-user btn-block">
+                          Registrar Conta
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
-            </div>
 
-            <div id="medico-form">
-              <form class="doctor">
-                <h1>MÉDICO</h1>
-                <div class="firs-pass-doctor">
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                        placeholder="Nome">
+
+              <div id="medico-form">
+                <form class="doctor">
+                  <h1>MÉDICO</h1>
+                  <div class="first-pass-doctor">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Nome">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="Sobrenome">
+                      </div>
                     </div>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control form-control-user" id="exampleLastName"
-                        placeholder="Sobrenome">
+                    <div class="form-group row">
+                      <div class="col-12">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Email">
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-12">
-                      <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                        placeholder="Email">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control " id="exampleFirstName" placeholder="CPF">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="RG">
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="CPF">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="date" class="form-control " id="exampleFirstName" placeholder="Dt Nasc">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="TEL">
+                      </div>
                     </div>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="RG">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="date" class="form-control form-control-user" id="exampleFirstName"
-                        placeholder="Dt Nasc">
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="TEL">
-                    </div>
-                  </div>
-                  <div class="form-group row justify-content-center">
-                    <div class="col-sm-5 mb-3 mb-sm-0">
-                      <a href="" class="btn btn-primary btn-user btn-block">
-                        Próximo
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="second-pass-doctor">
-                  <div class="form-group row">
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="CEP">
-                    </div>
-                    <div class="col-sm-6">
-                      <p>Estado<span data-js="UF"></span></p>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <p>Cidade<span data-js=""></span></p>
-                    </div>
-                    <div class="col-sm-6">
-                      <p>Bairro<span data-js=""></span></p>
+                    <div class="form-group row justify-content-center">
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" id="first-next-doctor" class="btn btn-primary btn-user btn-block">
+                          Próximo
+                        </a>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="form-group row justify-content-center">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <p>Endereço<span data-js=""></span></p>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <p>Complemento<span data-js=""></span></p>
-                    </div>
-                    <div class="col-sm-6">
-                      <p>Número<span data-js=""></span></p>
-                    </div>
-                  </div>
-                  <div class="form-group row justify-content-center">
-                    <div class="col-sm-5 mb-3 mb-sm-0">
-                      <a href="" class="btn btn-primary btn-user btn-block">
-                        Próximo
-                      </a>
-                    </div>
-                  </div>
                   <div class="second-pass-doctor">
                     <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Senha">
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control " id="exampleLastName" placeholder="CEP">
                       </div>
+                      <div class="col-sm-6">
+                        <p>Estado<span data-js="UF"></span></p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Confirmar Senha">
+                        <p>Cidade<span data-js=""></span></p>
+                      </div>
+                      <div class="col-sm-6">
+                        <p>Bairro<span data-js=""></span></p>
+                      </div>
+                    </div>
+
+                    <div class="form-group row justify-content-center">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <p>Endereço<span data-js=""></span></p>
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Senha">
+                        <p>Complemento<span data-js=""></span></p>
                       </div>
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control form-control-user" id="exampleFirstName"
-                          placeholder="Confirmar Senha">
+                      <div class="col-sm-6">
+                        <p>Número<span data-js=""></span></p>
+                      </div>
+                    </div>
+                    <!-- das -->
+                    <div class="form-group row justify-content-center">
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" id="first-back-doctor" class="btn btn-primary btn-user btn-block btn-back">
+                          Voltar 1
+                        </a>
+                      </div>
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" id="second-next-doctor" class="btn btn-primary btn-user btn-block">
+                          Próximo
+                        </a>
                       </div>
                     </div>
                   </div>
-                  <a href="login.html" class="btn btn-primary btn-user btn-block">
-                    Registrar Conta
-                  </a>
-                  <hr>
-                </div>
-              </form>
-            </div>
 
-            <hr>
-            <div class="text-center">
-              <a class="small" href="forgot-password.html">Esqueceu a Senha?</a>
-            </div>
-            <div class="text-center">
-              <a class="small" href="login.html">Já possui uma conta? Entrar!</a>
+                  <div class="third-pass-doctor">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control " id="exampleFirstName" placeholder="CRM">
+                      </div>
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control " id="exampleFirstName" placeholder="CRM">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control " id="exampleFirstName" placeholder="Senha">
+                      </div>
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control " id="exampleFirstName"
+                          placeholder="Confirmar Senha">
+                      </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" id="second-back-doctor" class="btn btn-primary btn-user btn-block btn-back">
+                          Voltar 2
+                        </a>
+                      </div>
+                      <div class="col-sm-5 mb-3 mb-sm-0">
+                        <a href="" class="btn btn-primary btn-user btn-block">
+                          Registrar Conta
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+
+              <!-- <hr>
+                        <div class="text-center">
+                            <a class="small" href="forgot-password.html">Esqueceu a Senha?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="login.html">Já possui uma conta? Entrar!</a>
+                        </div> -->
+              <!-- </div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="static/vendor/jquery/jquery.min.js"></script>
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="static/assets/js/sb-admin-2.min.js"></script>
-  <script src="static/assets/js/change-div.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="static/assets/js/sb-admin-2.min.js"></script>
+    <script src="static/assets/js/change-div.js"></script>
 
 </body>
 
