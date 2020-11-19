@@ -79,36 +79,36 @@
               </div>
 
               <div id="paciente-form">
-                <form class="user">
+                <form class="user" action="" method="post">
                   <h1>PACIENTE</h1>
                   <div class="first-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Nome">
+                        <input type="text" class="form-control " id="nome" name="nome" required placeholder="Nome">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="Sobrenome">
+                        <input type="text" class="form-control " id="sobrenome" name="sobrenome" required placeholder="Sobrenome">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-12">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Email">
+                        <input type="text" class="form-control " id="email" name="email" required placeholder="Email">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="CPF">
+                        <input type="text" class="form-control " id="cpf" name="cpf" required placeholder="CPF">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="RG">
+                        <input type="text" class="form-control " id="rg" name="rg" required placeholder="RG">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="date" class="form-control " id="exampleFirstName" placeholder="Dt Nasc">
+                        <input type="date" class="form-control " id="dtNascimento" name="dtNascimento" required placeholder="Dt Nasc">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="TEL">
+                        <input type="text" class="form-control " id="telefone" name="telefone" required placeholder="TEL">
                       </div>
                     </div>
                     <div class="form-group row justify-content-center">
@@ -123,50 +123,49 @@
                   <div class="second-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="CEP">
+                        <input type="text" class="form-control " id="cep" name="cep" required placeholder="CEP">
                       </div>
                       <div class="col-sm-6">
-                        <p>Estado<span data-js="UF"></span></p>
+                        <p>Estado<span data-js="UF" id="estadoUf" name="estadoUf"></span></p>
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Cidade<span data-js=""></span></p>
+                        <p>Cidade<span data-js="" id="cidade" name="cidade"></span></p>
                       </div>
                       <div class="col-sm-6">
-                        <p>Bairro<span data-js=""></span></p>
+                        <p>Bairro<span data-js="" id="bairro" name="bairro"></span></p>
                       </div>
                     </div>
 
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Endereço<span data-js=""></span></p>
+                        <p>Endereço<span data-js="" id="endereco" name="endereco"></span></p>
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Complemento<span data-js=""></span></p>
+                        <p>Complemento<span data-js="" id="complemento" name="complemento"></span></p>
                       </div>
                       <div class="col-sm-6">
-                        <p>Número<span data-js=""></span></p>
+                        <p>Número<span data-js="" id="numeroEndereco" name="numeroEndereco"></span></p>
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Nome Contato">
+                        <input type="text" class="form-control " id="nomeContato" name="nomeContato" required placeholder="Nome Contato">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="Tel Contato">
+                        <input type="text" class="form-control " id="telContato" name="telContato" required placeholder="Tel Contato">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control " id="exampleFirstName" placeholder="Senha">
+                        <input type="password" class="form-control " id="senha" name="senha" required placeholder="Senha">
                       </div>
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control " id="exampleFirstName"
-                          placeholder="Confirmar Senha">
+                        <input type="password" class="form-control " id="senhaConfirma" name="senhaConfirma" required placeholder="Confirmar Senha">
                       </div>
                     </div>
                     <div class="form-group row justify-content-center">
@@ -176,9 +175,9 @@
                         </a>
                       </div>
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" class="btn btn-primary btn-user btn-block">
+                        <button type="submit" href="" class="btn btn-primary btn-user btn-block">
                           Registrar Conta
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -192,31 +191,31 @@
                   <div class="first-pass-doctor">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Nome">
+                        <input type="text" class="form-control " id="nomeMedico"  name="nomeMedico" placeholder="Nome">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="Sobrenome">
+                        <input type="text" class="form-control " id="sobrenomeMedico"  name="sobrenomeMedico" placeholder="Sobrenome">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-12">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="Email">
+                        <input type="text" class="form-control " id="emailMedico" name="emailMedico" placeholder="Email">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="exampleFirstName" placeholder="CPF">
+                        <input type="text" class="form-control " id="cpfMedico" name="cpfMedico" placeholder="CPF">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="RG">
+                        <input type="text" class="form-control " id="rgMedico" name="rgMedico" placeholder="RG">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="date" class="form-control " id="exampleFirstName" placeholder="Dt Nasc">
+                        <input type="date" class="form-control " id="dtNascimentoMedico" name="dtNascimentoMedico" placeholder="Dt Nasc">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="TEL">
+                        <input type="text" class="form-control " id="telefoneMedico" name="telefoneMedico" placeholder="TEL">
                       </div>
                     </div>
                     <div class="form-group row justify-content-center">
@@ -231,33 +230,33 @@
                   <div class="second-pass-doctor">
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="exampleLastName" placeholder="CEP">
+                        <input type="text" class="form-control " id="cepMedico" name="cepMedico" placeholder="CEP">
                       </div>
                       <div class="col-sm-6">
-                        <p>Estado<span data-js="UF"></span></p>
+                        <p>Estado<span data-js="UF" id="estadoUfMedico" name="estadoUfMedico"></span></p>
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Cidade<span data-js=""></span></p>
+                        <p>Cidade<span data-js="" id="cidadeMedico" name="cidadeMedico"></span></p>
                       </div>
                       <div class="col-sm-6">
-                        <p>Bairro<span data-js=""></span></p>
+                        <p>Bairro<span data-js="" id="bairroMedico" name="bairroMedico"></span></p>
                       </div>
                     </div>
 
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Endereço<span data-js=""></span></p>
+                        <p>Endereço<span data-js="" id="enderecoMedico" name="enderecoMedico"></span></p>
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Complemento<span data-js=""></span></p>
+                        <p>Complemento<span data-js="" id="complementoMedico" name="complementoMedico"></span></p>
                       </div>
                       <div class="col-sm-6">
-                        <p>Número<span data-js=""></span></p>
+                        <p>Número<span data-js="" id="enderecoNumeroMedico" name="enderecoNumeroMedico"></span></p>
                       </div>
                     </div>
                     <!-- das -->
@@ -278,7 +277,7 @@
                   <div class="third-pass-doctor">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control " id="exampleFirstName" placeholder="CRM">
+                        <input type="password" class="form-control " id="crmMedico" name="crmMedico" placeholder="CRM">
                       </div>
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="password" class="form-control " id="exampleFirstName" placeholder="CRM">
@@ -287,10 +286,10 @@
 
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control " id="exampleFirstName" placeholder="Senha">
+                        <input type="password" class="form-control " id="senhaMedico" name="senhaMedico" placeholder="Senha">
                       </div>
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" class="form-control " id="exampleFirstName"
+                        <input type="password" class="form-control " id="senhaConfirmaMedico" name="senhaConfirmaMedico"
                           placeholder="Confirmar Senha">
                       </div>
                     </div>

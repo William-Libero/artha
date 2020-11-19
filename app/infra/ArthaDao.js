@@ -17,17 +17,17 @@ class ArthaDao{
                     hash,
                     usuario.cpf,
                     usuario.rg,
-                    usuario.dt_nasc,
+                    usuario.dtNascimento,
                     usuario.telefone,
                     usuario.cep,
-                    usuario.rua,
-                    usuario.numero,
+                    usuario.endereco,
+                    usuario.numeroEndereco,
                     usuario.bairro,
                     usuario.complemento,
-                    usuario.estado,
+                    usuario.estadoUf,
                     usuario.cidade,
-                    usuario.nome_contato, 
-                    usuario.tel_contato
+                    usuario.nomeContato, 
+                    usuario.telContato
                 ],
                 (error, resultado) => {
                     if(error) return reject(console.log(error));
