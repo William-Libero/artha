@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Register</title>
+  <title>Cadastro - Artha</title>
 
   <!-- Custom fonts for this template-->
   <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -80,11 +80,15 @@
 
               <div id="paciente-form">
                 <form class="user" action="" method="post">
+                  <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="paciente">
                   <h1>PACIENTE</h1>
                   <div class="first-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" class="form-control " id="nome" name="nome" required placeholder="Nome">
+                        <div class="valid-feedback">
+                          Tudo certo!
+                        </div>
                       </div>
                       <div class="col-sm-6">
                         <input type="text" class="form-control " id="sobrenome" name="sobrenome" required placeholder="Sobrenome">
@@ -97,10 +101,10 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="cpf" name="cpf" required placeholder="CPF">
+                        <input type="text" class="form-control " id="cpf" name="cpf" required placeholder="CPF" onkeydown="mascara('###.###.###-##',this,event,true)" maxlength="14">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="rg" name="rg" required placeholder="RG">
+                        <input type="text" class="form-control " id="rg" name="rg" required placeholder="RG" onkeydown="mascara('##.###.###-#',this,event,true)" maxlength="12">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -108,7 +112,7 @@
                         <input type="date" class="form-control " id="dtNascimento" name="dtNascimento" required placeholder="Dt Nasc">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="telefone" name="telefone" required placeholder="TEL">
+                        <input type="text" class="form-control " id="telefone" name="telefone" required placeholder="TEL" onkeydown="mascara('(##) #####-####',this,event,true)" maxlength="15">
                       </div>
                     </div>
                     <div class="form-group row justify-content-center">
@@ -123,33 +127,37 @@
                   <div class="second-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="cep" name="cep" required placeholder="CEP">
+                        <input type="text" class="form-control " id="cep" name="cep" required placeholder="CEP" onblur="recuperaCep();" onkeydown="mascara('#####-###',this,event,true)" maxlength="9">
                       </div>
                       <div class="col-sm-6">
-                        <p>Estado<span data-js="UF" id="estadoUf" name="estadoUf"></span></p>
+                        <p>Estado: <span data-js="UF" id="estadoUf" name="estadoUf"></span></p>
+                        <input type="hidden" id="estadoUfPost" name="estadoUfPost">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Cidade<span data-js="" id="cidade" name="cidade"></span></p>
+                        <p>Cidade: <span data-js="" id="cidade" name="cidade"></span></p>
+                        <input type="hidden" id="cidadePost" name="cidadePost" value="">
                       </div>
                       <div class="col-sm-6">
-                        <p>Bairro<span data-js="" id="bairro" name="bairro"></span></p>
-                      </div>
-                    </div>
-
-                    <div class="form-group row justify-content-center">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Endereço<span data-js="" id="endereco" name="endereco"></span></p>
+                        <p>Bairro: <span data-js="" id="bairro" name="bairro"></span></p>
+                        <input type="hidden" id="bairroPost" name="bairroPost">
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Complemento<span data-js="" id="complemento" name="complemento"></span></p>
+                        <p>Endereço: <span data-js="" id="endereco" name="endereco"></span></p>
+                        <input type="hidden" id="enderecoPost" name="enderecoPost">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control " id="complemento" name="complemento" required placeholder="Complemento:">
                       </div>
                       <div class="col-sm-6">
-                        <p>Número<span data-js="" id="numeroEndereco" name="numeroEndereco"></span></p>
+                        <input type="text" class="form-control " id="numeroEndereco" name="numeroEndereco" required placeholder="N°:">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -157,7 +165,7 @@
                         <input type="text" class="form-control " id="nomeContato" name="nomeContato" required placeholder="Nome Contato">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="telContato" name="telContato" required placeholder="Tel Contato">
+                        <input type="text" class="form-control " id="telContato" name="telContato" required placeholder="Tel Contato" onkeydown="mascara('(##) #####-####',this,event,true)" maxlength="15">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -187,6 +195,7 @@
 
               <div id="medico-form">
                 <form class="doctor">
+                  <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="medico">
                   <h1>MÉDICO</h1>
                   <div class="first-pass-doctor">
                     <div class="form-group row">
@@ -204,10 +213,10 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" class="form-control " id="cpfMedico" name="cpfMedico" placeholder="CPF">
+                        <input type="text" class="form-control " id="cpfMedico" name="cpfMedico" placeholder="CPF" onkeydown="mascara('###.###.###-##',this,event,true)" maxlength="14">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="rgMedico" name="rgMedico" placeholder="RG">
+                        <input type="text" class="form-control " id="rgMedico" name="rgMedico" placeholder="RG" onkeydown="mascara('##.###.###-#',this,event,true)" maxlength="12">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -215,7 +224,7 @@
                         <input type="date" class="form-control " id="dtNascimentoMedico" name="dtNascimentoMedico" placeholder="Dt Nasc">
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="telefoneMedico" name="telefoneMedico" placeholder="TEL">
+                        <input type="text" class="form-control " id="telefoneMedico" name="telefoneMedico" placeholder="TEL" onkeydown="mascara('(##) #####-####',this,event,true)" maxlength="15">
                       </div>
                     </div>
                     <div class="form-group row justify-content-center">
@@ -230,33 +239,37 @@
                   <div class="second-pass-doctor">
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <input type="text" class="form-control " id="cepMedico" name="cepMedico" placeholder="CEP">
+                        <input type="text" class="form-control " id="cepMedico" name="cepMedico" placeholder="CEP" onblur="recuperaCepMedico();" onkeydown="mascara('#####-###',this,event,true)" maxlength="9">
                       </div>
                       <div class="col-sm-6">
-                        <p>Estado<span data-js="UF" id="estadoUfMedico" name="estadoUfMedico"></span></p>
+                        <p>Estado: <span data-js="UF" id="estadoUfMedico" name="estadoUfMedico"></span></p>
+                        <input type="hidden" id="estadoUfMedicoPost" name="estadoUfMedicoPost" value="">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Cidade<span data-js="" id="cidadeMedico" name="cidadeMedico"></span></p>
+                        <p>Cidade: <span data-js="" id="cidadeMedico" name="cidadeMedico"></span></p>
+                        <input type="hidden" id="cidadeMedicoPost" name="cidadeMedicoPost" value="">
                       </div>
                       <div class="col-sm-6">
-                        <p>Bairro<span data-js="" id="bairroMedico" name="bairroMedico"></span></p>
-                      </div>
-                    </div>
-
-                    <div class="form-group row justify-content-center">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Endereço<span data-js="" id="enderecoMedico" name="enderecoMedico"></span></p>
+                        <p>Bairro: <span data-js="" id="bairroMedico" name="bairroMedico"></span></p>
+                        <input type="hidden" id="bairroMedicoPost" name="bairroMedicoPost" value="">
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Complemento<span data-js="" id="complementoMedico" name="complementoMedico"></span></p>
+                        <p>Endereço: <span data-js="" id="enderecoMedico" name="enderecoMedico"></span></p>
+                        <input type="hidden" id="enderecoMedicoPost" name="enderecoMedicoPost" value="">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control " id="complementoMedico" name="complementoMedico" required placeholder="Complemento:">
                       </div>
                       <div class="col-sm-6">
-                        <p>Número<span data-js="" id="enderecoNumeroMedico" name="enderecoNumeroMedico"></span></p>
+                        <input type="text" class="form-control " id="numeroMedico" name="numeroMedico" required placeholder="N°:">
                       </div>
                     </div>
                     <!-- das -->
@@ -335,7 +348,8 @@
     <!-- Custom scripts for all pages-->
     <script src="static/assets/js/sb-admin-2.min.js"></script>
     <script src="static/assets/js/change-div.js"></script>
-
+    <script src="static/assets/js/recuperaCep.js"></script>
+    <script src="static/assets/js/mascaraJs/mascara.min.js"></script>
 </body>
 
 </html>
