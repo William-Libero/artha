@@ -19,14 +19,18 @@ module.exports = (app) => {
             const arthaDao = new ArthaDao(db);
             arthaDao.getUsuarioPeloEmail(email)
                         .then(usuario => {
-                            const match = bcrypt.compareSync(senha, usuario[0].senha);
-                            if (!usuario || match == false) {
-                                return done(null, false, {
-                                    mensagem: 'Login ou senha incorretos!'
-                                });
-                            }
+                            if(usuario.length > 0){
+                                const match = bcrypt.compare(senha, usuario[0].senha);
+                                if (!usuario || match == false) {
+                                    return done(null, false, {
+                                        mensagem: 'Login ou senha incorretos!'
+                                    });
+                                }
 
-                            return done(null, usuario);
+                                return done(null, usuario);
+                            }else{
+                                return done(null, usuario);
+                            }
                         })
                         .catch(erro => done(erro, false));
         }

@@ -26,7 +26,7 @@ function atribuiDadosDaApiDeCep(data){
 }
 
 function recuperaCepMedico(){
-    const cepDigitado = document.querySelector("#cep").value;
+    const cepDigitado = document.querySelector("#cepMedico").value;
     const url = `https://viacep.com.br/ws/${cepDigitado}/json/`;
 
     fetch(url)

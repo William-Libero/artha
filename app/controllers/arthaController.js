@@ -24,7 +24,7 @@ class arthaController {
     return (req, resp) => {
       const arthaDao = new ArthaDao(db);
       arthaDao
-        .cadastroUsuarioPaciente(req.body)
+        .cadastroUsuario(req.body)
         .then(resp.redirect('/login'))
         .catch(error => console.log(error));
     };
@@ -71,6 +71,9 @@ class arthaController {
       // Lógica de login.
       const passport = req.passport;
       passport.authenticate('local', (erro, usuario, info) => {
+        if(usuario.length <= 0){
+          info = true;
+        }
         if (info) {
           var loginInvalido = true;
           return resp.marko(templates.artha.login, { loginInvalido });
@@ -84,8 +87,12 @@ class arthaController {
           if (erro) {
             return next(erro);
           }
-
-          return resp.redirect('/dashboard/' + usuario[0].id_usuario);
+          
+          if(usuario[0].id_usuario > 0){
+            return resp.redirect('/dashboard/' + usuario[0].id_usuario);
+          }else if(usuario[0].id_medico > 0){
+            return resp.redirect('/dashboard/' + usuario[0].id_medico);
+          }
         });
       })(req, resp, next);
     };
