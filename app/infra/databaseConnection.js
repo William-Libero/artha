@@ -1,13 +1,15 @@
 var mysql = require('mysql');
-var connection = {
+var connect = {
   host: 'br182.hostgator.com.br',
   user: 'evidence_dev',
   password: 'evidence_dev1',
   database: 'evidence_artha'
 };
 
+var connection;
+
 function handleDisconnect() {
-  connection = mysql.createConnection(connection);
+  connection = mysql.createConnection(connect);
 
   connection.connect(function (err) {
     if (err) {
@@ -15,15 +17,16 @@ function handleDisconnect() {
       setTimeout(handleDisconnect, 2000);
     }
 
-    connection.on('error', function(err) {
-      console.log('db error', err);
-      if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-        handleDisconnect();                         // lost due to either server restart, or a
-      } else {                                      // connnection idle timeout (the wait_timeout
-        throw err;                                  // server variable configures this)
-      }
-    });
     console.log('connected as id ' + connection.threadId);
+  });
+
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect(); 
+    } else { 
+      throw err;                                  
+    }
   });
 }
 
