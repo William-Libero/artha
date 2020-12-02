@@ -10,7 +10,9 @@ class arthaController {
       autenticadas: '/dashboard*',
       cadastro: '/cadastro',
       login: '/login',
-      dashboard: '/dashboard/:id'
+      dashboard: '/dashboard/:id',
+      paciente: '/paciente/:id',
+      medico: '/medico/:id'
     };
   }
 
@@ -89,12 +91,42 @@ class arthaController {
           }
           
           if(usuario[0].id_usuario > 0){
-            return resp.redirect('/dashboard/' + usuario[0].id_usuario);
+            return resp.redirect('/paciente/' + usuario[0].id_usuario);
           }else if(usuario[0].id_medico > 0){
-            return resp.redirect('/dashboard/' + usuario[0].id_medico);
+            return resp.redirect('/medico/' + usuario[0].id_medico);
           }
         });
       })(req, resp, next);
+    };
+  }
+  
+  loginPaciente() {
+    return (req, resp) => {
+      const arthaDao = new ArthaDao(db);
+      const id = req.params.id;
+      arthaDao
+        .getUsuario(id)
+        .then(usuario =>
+          resp.marko(templates.artha.paciente, {
+            usuario
+          })
+        )
+        .catch(error => console.log(error));
+    };
+  }
+
+  loginMedico() {
+    return (req, resp) => {
+      const arthaDao = new ArthaDao(db);
+      const id = req.params.id;
+      arthaDao
+        .getMedico(id)
+        .then(medico =>
+          resp.marko(templates.artha.medico, {
+            medico
+          })
+        )
+        .catch(error => console.log(error));
     };
   }
 }

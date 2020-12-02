@@ -22,5 +22,13 @@ module.exports = app => {
     .get(ArthaController.loginAcesso())
     .post(ArthaController.efetuaLogin());
 
+  app
+    .route(rotasArtha.paciente)
+    .get(ArthaController.loginPaciente())
+
+    app
+    .route(rotasArtha.medico)
+    .get(ArthaController.loginMedico())
+
   app.get(rotasArtha.dashboard, ArthaController.redirecionaUserDepoisDoLogin());
 };

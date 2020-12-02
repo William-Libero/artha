@@ -110,6 +110,18 @@ class ArthaDao{
         });
     }
 
+    getMedico(id){
+        return new Promise ((resolve, reject) => {
+            this._connection.query("SELECT * FROM medico WHERE id_medico = ?", [id],
+                (error, medico) => {
+                    if(error) return reject(console.log(error));
+
+                    return resolve(medico);
+                }
+            )
+        });
+    }
+
     getUsuarioPeloEmail(email) {
         return new Promise((resolve, reject) => {
             this._connection.query(
