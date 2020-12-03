@@ -23,26 +23,43 @@
 </head>
 
 <style>
-  #medico-form {
-    display: none;
-  }
+    #medico-form {
+        display: none;
+    }
 
-  .second-pass-user {
-    display: none;
-  }
+    .second-pass-user {
+        display: none;
+    }
 
-  .second-pass-doctor {
-    display: none;
-  }
+    .second-pass-doctor {
+        display: none;
+    }
 
-  .third-pass-doctor {
-    display: none;
-  }
+    .third-pass-doctor {
+        display: none;
+    }
 
-  .btn-back {
-    background-color: red;
-    border-color: red;
-  }
+    .btn-back {
+      color: #fff;
+        background-color: red;
+        border-color: red;
+    }
+
+    .card-personalizes-size{
+      height: 600px!important;
+    }
+
+    .right-side{
+      height: 600px;
+     display: flex;
+    align-items: center;
+    }
+
+   .title-names{
+    text-align: center;
+   }
+    
+
 </style>
 
 <body class="bg-gradient-primary">
@@ -50,11 +67,13 @@
   <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
+      <div class="card-body p-0 card-personalizes-size">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-7">
+          <div class="col-lg-5 d-none d-lg-block right-side">
+            <img class="artha-img" src="static/assets/img/artha-background.jpeg" alt="">
+          </div>
+          <div class="col-lg-7 right-side">
 
             <div class="p-2">
               <div class="text-center">
@@ -64,14 +83,14 @@
               <div class="form-group row justify-content-center">
                 <div class="form-check col-2">
                   <label class="form-check-label paciente-check" for="paciente-check1">
-                    <input class="form-check-input paciente-check" type="radio" name="exampleRadios"
+                    <input class="title-names form-check-input paciente-check" type="radio" name="exampleRadios"
                       id="paciente-check1" checked value="option1">
                     Paciente
                   </label>
                 </div>
                 <div class="form-check col-2">
                   <label class="form-check-label medico-check" for="medico-check1">
-                    <input class="form-check-input medico-check" type="radio" name="exampleRadios" id="medico-check1"
+                    <input class="title-names form-check-input medico-check" type="radio" name="exampleRadios" id="medico-check1"
                       value="option2">
                     Médico
                   </label>
@@ -117,7 +136,7 @@
                     </div>
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <button id="first-next-user" class="btn btn-primary btn-user btn-block">
+                        <button id="first-next-user" class="btn btn-green btn-block">
                           Próximo
                         </button>
                       </div>
@@ -178,12 +197,12 @@
                     </div>
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" id="first-back-user" class="btn btn-primary btn-user btn-block btn-back">
+                        <a href="" id="first-back-user" class="btn btn-block btn-back">
                           Voltar
                         </a>
                       </div>
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <button type="submit" href="" class="btn btn-primary btn-user btn-block">
+                        <button type="submit" href="" class="btn btn-green btn-block">
                           Registrar Conta
                         </button>
                       </div>
@@ -229,7 +248,7 @@
                     </div>
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" id="first-next-doctor" class="btn btn-primary btn-user btn-block">
+                        <a href="" id="first-next-doctor" class="btn btn-green btn-block">
                           Próximo
                         </a>
                       </div>
@@ -275,12 +294,12 @@
                     <!-- das -->
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" id="first-back-doctor" class="btn btn-primary btn-user btn-block btn-back">
+                        <a href="" id="first-back-doctor" class="btn btn-block btn-back">
                           Voltar
                         </a>
                       </div>
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" id="second-next-doctor" class="btn btn-primary btn-user btn-block">
+                        <a href="" id="second-next-doctor" class="btn btn-green btn-block">
                           Próximo
                         </a>
                       </div>
@@ -308,12 +327,12 @@
                     </div>
                     <div class="form-group row justify-content-center">
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <a href="" id="second-back-doctor" class="btn btn-primary btn-user btn-block btn-back">
+                        <a href="" id="second-back-doctor" class="btn  btn-block btn-back">
                           Voltar
                         </a>
                       </div>
                       <div class="col-sm-5 mb-3 mb-sm-0">
-                        <button type="submit" href="" class="btn btn-primary btn-user btn-block">
+                        <button type="submit" href="" class="btn btn-green btn-block">
                           Registrar Conta
                         </button>
                       </div>

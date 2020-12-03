@@ -6,11 +6,12 @@
 }
 
 /* botao entrar */
-.btn-primary {
+.btn-green {
     color: #fff;
     background-color: #8ED33A;
     border-color: #8ED33A;
 }
+
 
 /* alert erro login*/
 .erro-login{

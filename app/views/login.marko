@@ -21,6 +21,17 @@
     <link href="static/assets/css/sb-admin-2.min.css" rel="stylesheet"/>
     <link href="static/assets/css/login.css" rel="stylesheet"/>
   </head>
+  <style>
+  .btn-green{
+    font-weight: bold;
+  }
+  form.user .form-control-user {
+    font-size: .8rem;
+    border-radius: 0rem;
+    padding: 1.5rem 1rem;
+}
+
+  </style>
   <body class="bg-gradient-primary">
     <div class="container">
       <!-- Outer Row -->
@@ -40,7 +51,9 @@
             <div class="card-body p-0">
               <!-- Nested Row within Card Body -->
               <div class="row">
-                <div class="col-lg-6 d-none d-lg-block bg-login-image"/>
+                <div class="col-lg-6 d-none d-lg-block ">
+                  <img class="artha-img" src="static/assets/img/artha-background.jpeg" alt="">
+                </div>
                 <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
@@ -70,19 +83,14 @@
                           <label class="custom-control-label" for="customCheck">Lembrar Senha</label>
                         </div>
                       </div>
-                      <input type="submit" value="Entrar" class="btn btn-primary btn-user btn-block"/>
+                      <input type="submit" value="Entrar" class="btn btn-green btn-block"/>
                       <hr/>
-                      <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                    </a> -->
+
                     </form>
                     <hr/>
-                    <div class="text-center">
-                      <a class="small" href="forgot-password.html">Esqueçeu sua senha?</a>
-                    </div>
+                    <!-- <div class="text-center">
+                      <a class="small " href="forgot-password.html">Esqueçeu sua senha?</a>
+                    </div> -->
                     <div class="text-center">
                       <a class="small" href="/cadastro">Criar conta!</a>
                     </div>
