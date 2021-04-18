@@ -2,6 +2,6 @@ const app = require('./config/custom-express');
 
 require('./config/custom-express');
 
-app.listen(3005, () => {
+app.listen(8000, () => {
     console.log('Server rodando!');
 });
