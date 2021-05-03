@@ -74,6 +74,7 @@ class arthaController {
       // Lógica de login.
       const passport = req.passport;
       passport.authenticate('local', (erro, usuario, info) => {
+        console.log(usuario);
         if(usuario.length <= 0){
           info = true;
         }
