@@ -1,0 +1,9 @@
+.container-video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#preview{
+    width: 80vw;
+}

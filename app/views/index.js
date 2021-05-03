@@ -4,5 +4,6 @@ module.exports = {
     dashboard: require('../views/dashboard.marko'),
     register: require('../views/register.marko'),
     paciente: require('../views/paciente-recebe.marko'),
-    medico: require('../views/tabelas.marko')
+    medico: require('../views/tabelas.marko'),
+    qrcodeUser: require('../views/qrcodeUser.marko')
 } 

@@ -12,7 +12,8 @@ class arthaController {
       login: '/login',
       dashboard: '/dashboard/:id',
       paciente: '/paciente/:id',
-      medico: '/medico/:id'
+      medico: '/medico/:id',
+      qrcodeUser: '/qrcodeUser'
     };
   }
 
@@ -127,6 +128,14 @@ class arthaController {
           })
         )
         .catch(error => console.log(error));
+    };
+  }
+
+  qrcodeUser(){
+    return (req, resp) => {
+      const arthaDao = new ArthaDao(db);
+      const id = req.params.id;
+      resp.marko(templates.artha.qrcodeUser);
     };
   }
 }
