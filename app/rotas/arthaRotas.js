@@ -25,6 +25,7 @@ module.exports = app => {
   app
     .route(rotasArtha.paciente)
     .get(ArthaController.loginPaciente())
+    .post(ArthaController.editaPaciente());
 
   app
   .route(rotasArtha.medico)

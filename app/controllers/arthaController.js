@@ -1,6 +1,4 @@
-const db = require('../infra/databaseConnection');
 const ArthaDao = require('../infra/ArthaDao');
-const connection = require('../infra/databaseConnection');
 
 const templates = require('../views/template');
 
@@ -25,7 +23,7 @@ class arthaController {
 
   cadastro() {
     return (req, resp) => {
-      const arthaDao = new ArthaDao(db);
+      const arthaDao = new ArthaDao();
       arthaDao
         .cadastroUsuario(req.body)
         .then(resp.redirect('/login'))
@@ -41,7 +39,7 @@ class arthaController {
 
   login() {
     return (req, resp) => {
-      const arthaDao = new ArthaDao(db);
+      const arthaDao = new ArthaDao();
 
       arthaDao
         .login(req.body)
@@ -56,7 +54,7 @@ class arthaController {
 
   redirecionaUserDepoisDoLogin() {
     return (req, resp) => {
-      const arthaDao = new ArthaDao(db);
+      const arthaDao = new ArthaDao();
       const id = req.params.id;
       arthaDao
         .getUsuario(id)
@@ -74,7 +72,6 @@ class arthaController {
       // Lógica de login.
       const passport = req.passport;
       passport.authenticate('local', (erro, usuario, info) => {
-        console.log(usuario);
         if(usuario.length <= 0){
           info = true;
         }
@@ -91,7 +88,7 @@ class arthaController {
           if (erro) {
             return next(erro);
           }
-          
+
           if(usuario[0].id_usuario > 0){
             return resp.redirect('/paciente/' + usuario[0].id_usuario);
           }else if(usuario[0].id_medico > 0){
@@ -104,22 +101,41 @@ class arthaController {
   
   loginPaciente() {
     return (req, resp) => {
-      const arthaDao = new ArthaDao(db);
+      const arthaDao = new ArthaDao();
       const id = req.params.id;
       arthaDao
         .getUsuario(id)
-        .then(usuario =>
+        .then(usuario => {
+          var doencas = usuario[0].doencas_auto_adquiridas.split(",");
+          usuario[0].hipertencao  = doencas[0] != 'undefined' ? 'checked' : '';
+          usuario[0].tabagismo    = doencas[1] != 'undefined' ? 'checked' : '';
+          usuario[0].estresse     = doencas[2] != 'undefined' ? 'checked' : '';
+          usuario[0].sedentarismo = doencas[3] != 'undefined' ? 'checked' : '';
+          usuario[0].diabetes     = doencas[4] != 'undefined' ? 'checked' : '';
+          usuario[0].colesterol   = doencas[5] != 'undefined' ? 'checked' : '';
+          
           resp.marko(templates.artha.paciente, {
             usuario
           })
+        }
         )
+        .catch(error => console.log(error));
+    };
+  }
+
+  editaPaciente() {
+    return (req, resp) => {
+      const arthaDao = new ArthaDao();
+      arthaDao
+        .editaPaciente(req.body)
+        .then(resp.redirect('/paciente/'+req.body.idUsuario))
         .catch(error => console.log(error));
     };
   }
 
   loginMedico() {
     return (req, resp) => {
-      const arthaDao = new ArthaDao(db);
+      const arthaDao = new ArthaDao();
       const id = req.params.id;
       arthaDao
         .getMedico(id)
@@ -134,7 +150,7 @@ class arthaController {
 
   qrcodeUser(){
     return (req, resp) => {
-      const arthaDao = new ArthaDao(db);
+      const arthaDao = new ArthaDao();
       const id = req.params.id;
       resp.marko(templates.artha.qrcodeUser);
     };

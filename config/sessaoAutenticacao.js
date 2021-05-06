@@ -4,7 +4,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const ArthaDao = require('../app/infra/ArthaDao');
-const db = require('../app/infra/databaseConnection');
 
 const bcrypt = require('bcryptjs');
 
@@ -16,7 +15,7 @@ module.exports = (app) => {
             passwordField: 'senha'
         },
         (email, senha, done) => {
-            const arthaDao = new ArthaDao(db);
+            const arthaDao = new ArthaDao();
             arthaDao.getUsuarioPeloEmail(email)
                         .then(usuario => {
                             if(usuario.length > 0){

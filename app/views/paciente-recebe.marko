@@ -17,10 +17,6 @@
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="../static/assets/css/sb-admin-2.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../static/assets/css/global.css">
-
 </head>
 
 <style>
@@ -46,7 +42,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
-          <img src="static/assets/img/artha_icon.ico" class="artha-icon" alt="">
+          <img src="../static/assets/img/artha_icon.ico" class="artha-icon" alt="">
         </div>
         <div class="sidebar-brand-text mx-3">Artha</div>
       </a>
@@ -153,7 +149,8 @@
         <div>
 
           <div class="container-fluid">
-            <form>
+            <form class="" action="" method="post">
+              <input type="hidden" id="idUsuario" name="idUsuario" value='${data.usuario[0].id_usuario}'>
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group col-md-4">
                   <label for="nome">Nome:</label><br/>
@@ -244,75 +241,84 @@
                   <span id="telContato">${data.usuario[0].telefone_contato}</span>
                 </div>
               </div>
-
               <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-8">
+                  <hr>
+                </div>
+              </div>
+              <div class="form-row justify-content: space-around justify-content-center">
+                <div class="form-group col-md-4">
                   <button class="btn-qrcode">Abrir Ficha Completa</button>
+                </div>
+                <div class="form-group col-md-4">
                 </div>
               </div>
 
               <div class="ficha-completa">
-                <div class="form-row">
-                  <div class="form-group col-md-6">
+                <div class="form-row justify-content: space-around justify-content-center">
+                  <div class="form-group col-md-4">
                     <label for="inputEmail4">Tipo Sanguíneo</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder=" ">
+                    <input type="text" class="form-control " id="tipoSanguineo" name="tipoSanguineo" value='${data.usuario[0].tipo_sanguineo}' required>
                   </div>
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-4">
                     <label for="inputEmail4">Plano de Saúde</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder=" ">
+                    <input type="text" class="form-control " id="planoDeSaude" name="planoDeSaude" value='${data.usuario[0].plano_saude}' required>
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
+                <div class="form-row justify-content: space-around justify-content-center">
+                  <div class="form-group col-md-4">
                     <label for="alergia">Alergias</label>
-                    <textarea class="form-control" id="alergia" rows="3"></textarea>
+                    <textarea class="form-control" id="alergia" name="alergia" rows="3" style="resize: none;">${data.usuario[0].alergias}</textarea>
                   </div>
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-4">
                     <label for="alergia">Remédios</label>
-                    <textarea class="form-control" id="alergia" rows="3"></textarea>
+                    <textarea class="form-control" id="remedio" name="remedio" rows="3" style="resize: none;">${data.usuario[0].remedios}</textarea>
                   </div>
                 </div>
-                <h5>Doenças Auto Adquiridas</h5>
-                <div class="form-row">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="hipertenção" checked>
-                    <label class="form-check-label" for="hipertenção">
-                      Hipertenção
-                    </label>
+                <div class="form-row justify-content: space-around justify-content-center">
+                  <div class="form-group col-md-4">
+                    <h5>Doenças Auto Adquiridas</h5>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="hipertencao" id="hipertencao" name="hipertencao" ${data.usuario[0].hipertencao}>
+                      <label class="form-check-label" for="hipertenção">
+                        Hipertenção
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="tabagismo" id="tabagismo" name="tabagismo" ${data.usuario[0].tabagismo}>
+                      <label class="form-check-label" for="tabagismo">
+                        Tabagismo
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="estresse" id="estresse" name="estresse" ${data.usuario[0].estresse}>
+                      <label class="form-check-label" for="estresse">
+                        Estresse
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="sedentarismo" id="sedentarismo" name="sedentarismo" ${data.usuario[0].sedentarismo}>
+                      <label class="form-check-label" for="sedentarismo">
+                        Sedentarismo
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="diabetes" id="diabetes" name="diabetes" ${data.usuario[0].diabetes}>
+                      <label class="form-check-label" for="diabetes">
+                        Diabetes
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="colesterol" id="colesterol"  name="colesterol" ${data.usuario[0].colesterol}>
+                      <label class="form-check-label" for="colesterol">
+                        Colesterol
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
                   </div>
                 </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="tabagismo" checked>
-                    <label class="form-check-label" for="tabagismo">
-                      Tabagismo
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="estresse" checked>
-                    <label class="form-check-label" for="estresse">
-                      Estresse
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="sedentarismo" checked>
-                    <label class="form-check-label" for="sedentarismo">
-                      Sedentarismo
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="diabetes" checked>
-                    <label class="form-check-label" for="diabetes">
-                      Diabetes
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="colesterol" checked>
-                    <label class="form-check-label" for="colesterol">
-                      Colesterol
-                    </label>
-                  </div>
               </div>
-              <hr>
               <!-- PARTE DO QR INICIO -->
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group col-md-4">
@@ -350,7 +356,6 @@
 
       </div>
       <!-- End of Main Content -->
-
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -392,9 +397,14 @@
     </div>
   </div>
 
+
+  <!-- Custom styles for this template-->
+  <link href="../static/assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/assets/css/global.css">
+
   <!-- Bootstrap core JavaScript-->
-  <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -408,7 +418,6 @@
   <!-- Page level custom scripts -->
   <script src="../static/assets/js/demo/chart-area-demo.js"></script>
   <script src="../static/assets/js/demo/chart-pie-demo.js"></script>
-
 </body>
 
 </html>
