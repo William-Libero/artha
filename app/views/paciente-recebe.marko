@@ -40,7 +40,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/login">
         <div class="sidebar-brand-icon rotate-n-15">
           <img src="../static/assets/img/artha_icon.ico" class="artha-icon" alt="">
         </div>
@@ -419,7 +419,7 @@
     var urlQRCode = document.getElementById('urlQRCode').value;
     $("#valor").attr('value', window.location.origin+'/'+urlQRCode);
     var userInput = document.getElementById('valor').value;
-    
+
     var qrcode = new QRCode("qrcode", {
       text: userInput,
       width: 256,
