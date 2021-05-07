@@ -241,6 +241,19 @@
                   <span id="telContato">${data.usuario[0].telefone_contato}</span>
                 </div>
               </div>
+              
+              <!-- PARTE DO QR INICIO -->
+              <div class="form-row justify-content: space-around justify-content-center">
+                <div class="form-group col-md-4">
+                  <div>
+                    <div class="container-fluid"></div>
+                    <label for="qrcode">QR Code:</label><br/>
+                    <div id="qrcode"></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                </div>
+              </div>
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group col-md-8">
                   <hr>
@@ -248,13 +261,13 @@
               </div>
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group col-md-4">
-                  <button class="btn-qrcode">Abrir Ficha Completa</button>
+                  <input type="button" class="btn-qrcode" id="open-all" value="Abrir Ficha Completa">
                 </div>
                 <div class="form-group col-md-4">
                 </div>
               </div>
 
-              <div class="ficha-completa">
+              <div class="ficha-completa" id="complete-record" style="display: none;">
                 <div class="form-row justify-content: space-around justify-content-center">
                   <div class="form-group col-md-4">
                     <label for="inputEmail4">Tipo Sanguíneo</label>
@@ -318,41 +331,14 @@
                   <div class="form-group col-md-4">
                   </div>
                 </div>
-              </div>
-              <!-- PARTE DO QR INICIO -->
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <div>
-                    <div class="container-fluid"></div>
-
-                    <input type="text" id="valor" value="" class="mr-1">
-                    <button onclick="createQrCode()" class="btn-qrcode">Criar QR Code</button>
-                    <div id="qrcode"></div>
-                    <!-- CODIGO PARA GERAR QR -->
-                    <script>
-                      function createQrCode() {
-                        var userInput = document.getElementById('valor').value;
-
-                        var qrcode = new QRCode("qrcode", {
-                          text: userInput,
-                          width: 256,
-                          height: 256,
-                          colorDark: 'black',
-                          colorLight: 'white',
-                          correctLevel: QRCode.CorrectLevel.H
-                        })
-                      }
-                    </script>
-
-                  </div>
-                </div>
-              </div>
+                
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group">
                     <div class="container-fluid">
-                      <input type="submit" class="btn-qrcode" value="Enviar dados">
+                      <input type="submit" class="btn-qrcode" id="close-all" value="Salvar alterações">
                     </div>
                   </div>
+              </div>
               </div>
             </form>
           </div>
@@ -419,12 +405,39 @@
   <!-- Custom scripts for all pages-->
   <script src="../static/assets/js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="../static/vendor/chart.js/Chart.min.js"></script>
+  <!-- QR Code -->
+  <script src="../static/assets/js/jquery.qrcode.min.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="../static/assets/js/demo/chart-area-demo.js"></script>
   <script src="../static/assets/js/demo/chart-pie-demo.js"></script>
+
+  <script>
+    var userInput = jQuery('#qrcode').qrcode({
+      text: window.location,
+      width: 256,
+      height: 256
+    });
+    
+    // ficha completa
+    var isOpen = false;
+    $("#open-all").click(function (event) {
+      event.preventDefault();
+      if(!isOpen){
+        isOpen = true;
+        $('#complete-record').css("display", "block");
+        $("#open-all").attr('value', 'Fechar ficha completa');
+      }else{
+        isOpen = false;
+        $('#complete-record').css("display", "none");
+        $("#open-all").attr('value', 'Abrir ficha completa');
+      }
+    });
+
+    $("#btn-qrcode").click(function (event) {
+      event.preventDefault();
+    });
+  </script>
 </body>
 
 </html>

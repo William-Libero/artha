@@ -12,17 +12,19 @@
   <title>Artha</title>
 
   <!-- Custom fonts for this template-->
-  <link href="./static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
+
   <!-- Custom styles for this template-->
   <link href="../static/assets/css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- <script type="text/javascript" src="jquery.min.js"></script> -->
-  <script type="text/javascript" src="../static/assets/js/qrcode.js"></script>
-  <link rel="stylesheet" href="static/assets/css/global.css">
 
+  <!-- instascan -->
+  <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <link rel="stylesheet" href="../static/assets/css/qr-code.css">
+  <link rel="stylesheet" href="../static/assets/css/global.css">
 </head>
 
 <body id="page-top">
@@ -48,24 +50,12 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-qrcode"></i>
-          <span>QR Code</span></a>
+          <span>QRCode</span>
+        </a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <!-- <div class="sidebar-heading">
-        Menu
-      </div>
-
-      Nav Item - Tables 
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Dados do user</span></a>
-      </li>
-      <hr class="sidebar-divider d-none d-md-block">-->
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -129,50 +119,48 @@
             </li>
 
 
-            <!-- <div class="topbar-divider d-none d-sm-block"></div>
+            <!-- Nav Item - User Information <div class="topbar-divider d-none d-sm-block"></div>-->
 
-            Nav Item - User Information 
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              </li>-->
-              <!-- Dropdown - User Information -->
-
+            <!-- Nav Item - User Information -->
+            
+            <!-- Dropdown - User Information -->
           </ul>
-
         </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <!-- inicio fuim -->
-        <div>
-
-          <div class="container-fluid"></div>
-
-          <input type="text" id="valor" value="" class="ml-4 mr-1">
-          <button class="btn-qrcode" onclick="createQrCode()">Criar QR</button>
-          <div id="qrcode"></div>
+        <div class="container-video">
+          <!-- instascaner isntall: npm install --save instascan -->
+          <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+          <video id="preview"></video>
           <script>
-            function createQrCode() {
-              var userInput = document.getElementById('valor').value;
-
-              var qrcode = new QRCode("qrcode", {
-                text: userInput,
-                width: 256,
-                height: 256,
-                colorDark: 'black',
-                colorLight: 'white',
-                correctLevel: QRCode.CorrectLevel.H
-              })
-            }
+            let scanner = new Instascan.Scanner(
+              {
+                video: document.getElementById('preview')
+              }
+            );
+            scanner.addListener('scan', function (content) {
+              alert('Escanado: ' + content);
+              window.open(content, "_blank");
+            });
+            Instascan.Camera.getCameras().then(cameras => {
+              if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+              } else {
+                console.error('Câmera Inexistente');
+              }
+            });
           </script>
+
+
+
         </div>
+        <!-- /.container-fluid -->
+
       </div>
-      <!-- /.container-fluid -->
-      
+      <!-- End of Main Content -->
+
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -182,8 +170,9 @@
         </div>
       </footer>
       <!-- End of Footer -->
+
     </div>
-    <!-- End of Main Content -->
+    <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
