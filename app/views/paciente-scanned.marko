@@ -40,7 +40,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/login">
         <div class="sidebar-brand-icon rotate-n-15">
           <img src="../static/assets/img/artha_icon.ico" class="artha-icon" alt="">
         </div>
@@ -52,9 +52,6 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
       </li>
 
       <!-- Divider -->
@@ -76,7 +73,7 @@
       <!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
       <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
+      <div class="text-center d-none d-md-inline" style="padding-top: 20px;">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
@@ -109,35 +106,10 @@
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
               </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                      aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
             </li>
 
 
             <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nome">${data.usuario[0].nome} ${data.usuario[0].sobrenome}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-            </li>
 
           </ul>
 
@@ -151,7 +123,6 @@
           <div class="container-fluid">
             <form class="" action="" method="post">
               <input type="hidden" id="idUsuario" name="idUsuario" value='${data.usuario[0].id_usuario}'>
-              <input type="hidden" id="urlQRCode" name="urlQRCode" value='paciente_scanned/${data.usuario[0].id_usuario}'>
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group col-md-4">
                   <label for="nome">Nome:</label><br/>
@@ -257,90 +228,7 @@
               </div>
               <div class="form-row justify-content: space-around justify-content-center">
                 <div class="form-group col-md-8">
-                  <hr>
                 </div>
-              </div>
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <input type="button" class="btn-qrcode" id="open-all" value="Abrir Ficha Completa">
-                </div>
-                <div class="form-group col-md-4">
-                </div>
-              </div>
-
-              <div class="ficha-completa" id="complete-record" style="display: none;">
-                <div class="form-row justify-content: space-around justify-content-center">
-                  <div class="form-group col-md-4">
-                    <label for="inputEmail4">Tipo Sanguíneo ${data.usuario[0].authenticate}</label>
-                    <input type="text" class="form-control " id="tipoSanguineo" name="tipoSanguineo" value='${data.usuario[0].tipo_sanguineo}' required>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputEmail4">Plano de Saúde</label>
-                    <input type="text" class="form-control " id="planoDeSaude" name="planoDeSaude" value='${data.usuario[0].plano_saude}' required>
-                  </div>
-                </div>
-                <div class="form-row justify-content: space-around justify-content-center">
-                  <div class="form-group col-md-4">
-                    <label for="alergia">Alergias</label>
-                    <textarea class="form-control" id="alergia" name="alergia" rows="3" style="resize: none;">${data.usuario[0].alergias}</textarea>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="alergia">Remédios</label>
-                    <textarea class="form-control" id="remedio" name="remedio" rows="3" style="resize: none;">${data.usuario[0].remedios}</textarea>
-                  </div>
-                </div>
-                <div class="form-row justify-content: space-around justify-content-center">
-                  <div class="form-group col-md-4">
-                    <h5>Doenças Auto Adquiridas</h5>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="hipertencao" id="hipertencao" name="hipertencao" ${data.usuario[0].hipertencao}>
-                      <label class="form-check-label" for="hipertenção">
-                        Hipertenção
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="tabagismo" id="tabagismo" name="tabagismo" ${data.usuario[0].tabagismo}>
-                      <label class="form-check-label" for="tabagismo">
-                        Tabagismo
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="estresse" id="estresse" name="estresse" ${data.usuario[0].estresse}>
-                      <label class="form-check-label" for="estresse">
-                        Estresse
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="sedentarismo" id="sedentarismo" name="sedentarismo" ${data.usuario[0].sedentarismo}>
-                      <label class="form-check-label" for="sedentarismo">
-                        Sedentarismo
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="diabetes" id="diabetes" name="diabetes" ${data.usuario[0].diabetes}>
-                      <label class="form-check-label" for="diabetes">
-                        Diabetes
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="colesterol" id="colesterol"  name="colesterol" ${data.usuario[0].colesterol}>
-                      <label class="form-check-label" for="colesterol">
-                        Colesterol
-                      </label>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                  </div>
-                </div>
-                
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group">
-                    <div class="container-fluid">
-                      <input type="submit" class="btn-qrcode" id="close-all" value="Salvar alterações">
-                      <input type="text" id="valor" value="" class="mr-1">
-                    </div>
-                  </div>
-              </div>
               </div>
             </form>
           </div>
@@ -414,40 +302,6 @@
   <!-- Page level custom scripts -->
   <script src="../static/assets/js/demo/chart-area-demo.js"></script>
   <script src="../static/assets/js/demo/chart-pie-demo.js"></script>
-
-  <script>
-    var urlQRCode = document.getElementById('urlQRCode').value;
-    $("#valor").attr('value', window.location.origin+'/'+urlQRCode);
-    var userInput = document.getElementById('valor').value;
-    
-    var qrcode = new QRCode("qrcode", {
-      text: userInput,
-      width: 256,
-      height: 256,
-      colorDark: 'black',
-      colorLight: 'white',
-      correctLevel: QRCode.CorrectLevel.H
-    })
-    
-    // ficha completa
-    var isOpen = false;
-    $("#open-all").click(function (event) {
-      event.preventDefault();
-      if(!isOpen){
-        isOpen = true;
-        $('#complete-record').css("display", "block");
-        $("#open-all").attr('value', 'Fechar ficha completa');
-      }else{
-        isOpen = false;
-        $('#complete-record').css("display", "none");
-        $("#open-all").attr('value', 'Abrir ficha completa');
-      }
-    });
-
-    $("#btn-qrcode").click(function (event) {
-      event.preventDefault();
-    });
-  </script>
 </body>
 
 </html>

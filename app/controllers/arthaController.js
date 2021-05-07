@@ -10,6 +10,7 @@ class arthaController {
       login: '/login',
       dashboard: '/dashboard/:id',
       paciente: '/paciente/:id',
+      paciente_scanned: '/paciente_scanned/:id',
       medico: '/medico/:id',
       qrcodeUser: '/qrcodeUser'
     };
@@ -117,6 +118,22 @@ class arthaController {
           }
           
           resp.marko(templates.artha.paciente, {
+            usuario
+          })
+        }
+        )
+        .catch(error => console.log(error));
+    };
+  }
+
+  pacienteScanned() {
+    return (req, resp) => {
+      const arthaDao = new ArthaDao();
+      const id = req.params.id;
+      arthaDao
+        .getUsuario(id)
+        .then(usuario => {          
+          resp.marko(templates.artha.paciente_scanned, {
             usuario
           })
         }
