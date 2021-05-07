@@ -415,8 +415,10 @@
   <script src="../static/assets/js/demo/chart-pie-demo.js"></script>
 
   <script>
+    $("#valor").attr('value', window.location);
+    var userInput = document.getElementById('valor').value;
     var qrcode = new QRCode("qrcode", {
-      text: window.location,
+      text: userInput,
       width: 256,
       height: 256,
       colorDark: 'black',
