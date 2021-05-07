@@ -336,6 +336,7 @@
                 <div class="form-group">
                     <div class="container-fluid">
                       <input type="submit" class="btn-qrcode" id="close-all" value="Salvar alterações">
+                      <input type="text" id="valor" value="" class="mr-1">
                     </div>
                   </div>
               </div>
@@ -407,17 +408,21 @@
 
   <!-- QR Code -->
   <script src="../static/assets/js/jquery.qrcode.min.js"></script>
+  <script src="../static/assets/js/qrcode.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="../static/assets/js/demo/chart-area-demo.js"></script>
   <script src="../static/assets/js/demo/chart-pie-demo.js"></script>
 
   <script>
-    var userInput = jQuery('#qrcode').qrcode({
+    var qrcode = new QRCode("qrcode", {
       text: window.location,
       width: 256,
-      height: 256
-    });
+      height: 256,
+      colorDark: 'black',
+      colorLight: 'white',
+      correctLevel: QRCode.CorrectLevel.H
+    })
     
     // ficha completa
     var isOpen = false;
