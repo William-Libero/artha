@@ -132,7 +132,17 @@ class arthaController {
       const id = req.params.id;
       arthaDao
         .getUsuario(id)
-        .then(usuario => {          
+        .then(usuario => { 
+          if(usuario[0].doencas_auto_adquiridas){
+            var doencas = usuario[0].doencas_auto_adquiridas.split(",");
+            usuario[0].hipertencao  = doencas[0] != 'undefined' ? 'checked' : '';
+            usuario[0].tabagismo    = doencas[1] != 'undefined' ? 'checked' : '';
+            usuario[0].estresse     = doencas[2] != 'undefined' ? 'checked' : '';
+            usuario[0].sedentarismo = doencas[3] != 'undefined' ? 'checked' : '';
+            usuario[0].diabetes     = doencas[4] != 'undefined' ? 'checked' : '';
+            usuario[0].colesterol   = doencas[5] != 'undefined' ? 'checked' : '';
+          }
+                   
           resp.marko(templates.artha.paciente_scanned, {
             usuario
           })

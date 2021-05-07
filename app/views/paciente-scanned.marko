@@ -94,14 +94,6 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <div class="topbar-divider d-none d-sm-block"></div>
-          </ul>
-
         </nav>
         <!-- End of Topbar -->
 
@@ -118,75 +110,6 @@
                   <span id="nome">${data.usuario[0].nome}</span>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="sobrenome">Sobrenome:</label><br/>
-                  <span id="sobrenome">${data.usuario[0].sobrenome}</span>
-                </div>
-              </div>
-
-              <br>
-
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <label for="email">Email:</label><br/>
-                  <span id="email">${data.usuario[0].email}</span>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="cpf">CPF:</label><br/>
-                  <span id="cpf">${data.usuario[0].cpf}</span>
-                </div>
-              </div>
-
-
-              <br>
-
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <label for="rg">RG:</label><br/>
-                  <span id="rg">${data.usuario[0].rg}</span>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="dtNascimento">Data Nascimento:</label><br/>
-                  <span id="dtNascimento">${data.usuario[0].dt_nasc}</span>
-                </div>
-              </div>
-
-
-              <br>
-
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <label for="telefone">Telefone:</label><br/>
-                  <span id="telefone">${data.usuario[0].telefone}</span>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="cep">CEP:</label><br/>
-                  <span id="cep">${data.usuario[0].cep}</span>
-                </div>
-              </div>
-
-              <br>
-
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <label for="estadoUfPost">Estado:</label><br/>
-                  <span id="estadoUfPost">${data.usuario[0].estado_uf}</span>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="cidadePost">Cidade:</label><br/>
-                  <span id="cidadePost">${data.usuario[0].cidade}</span>
-                </div>
-              </div>
-
-              <br>
-
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <label for="complemento">Complemento:</label><br/>
-                  <span id="complemento">${data.usuario[0].complemento}</span>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="numeroEndereco">Número:</label><br/>
-                  <span id="numeroEndereco">${data.usuario[0].endereco_numero}</span>
                 </div>
               </div>
 
@@ -202,23 +125,64 @@
                   <span id="telContato">${data.usuario[0].telefone_contato}</span>
                 </div>
               </div>
-              
-              <!-- PARTE DO QR INICIO -->
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-4">
-                  <div>
-                    <div class="container-fluid"></div>
-                    <label for="qrcode">QR Code:</label><br/>
-                    <div id="qrcode"></div>
+
+              <div class="ficha-completa" id="complete-record" style="display: block;">
+                <div class="form-row justify-content: space-around justify-content-center">
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail4">Tipo Sanguíneo ${data.usuario[0].authenticate}</label>
+                    <input disabled type="text" class="form-control " id="tipoSanguineo" name="tipoSanguineo" value='${data.usuario[0].tipo_sanguineo}' required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail4">Plano de Saúde</label>
+                    <input disabled type="text" class="form-control " id="planoDeSaude" name="planoDeSaude" value='${data.usuario[0].plano_saude}' required>
                   </div>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-row justify-content: space-around justify-content-center">
+                    <div class="form-group col-md-4">
+                      <label for="alergia">Alergias</label>
+                      <textarea disabled class="form-control" id="alergia" name="alergia" rows="3" style="resize: none;">${data.usuario[0].alergias}</textarea>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Doenças Auto Adquiridas</label>
+                        <div class="form-check">
+                        <input disabled="disabled" class="form-check-input" type="checkbox" value="hipertencao" id="hipertencao" name="hipertencao" ${data.usuario[0].hipertencao}>
+                        <label class="form-check-label" for="hipertenção">
+                            Hipertenção
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input disabled="disabled" class="form-check-input" type="checkbox" value="tabagismo" id="tabagismo" name="tabagismo" ${data.usuario[0].tabagismo}>
+                        <label class="form-check-label" for="tabagismo">
+                            Tabagismo
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input disabled="disabled" class="form-check-input" type="checkbox" value="estresse" id="estresse" name="estresse" ${data.usuario[0].estresse}>
+                        <label class="form-check-label" for="estresse">
+                            Estresse
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input disabled="disabled" class="form-check-input" type="checkbox" value="sedentarismo" id="sedentarismo" name="sedentarismo" ${data.usuario[0].sedentarismo}>
+                        <label class="form-check-label" for="sedentarismo">
+                            Sedentarismo
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input disabled="disabled" class="form-check-input" type="checkbox" value="diabetes" id="diabetes" name="diabetes" ${data.usuario[0].diabetes}>
+                        <label class="form-check-label" for="diabetes">
+                            Diabetes
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input disabled="disabled" class="form-check-input" type="checkbox" value="colesterol" id="colesterol"  name="colesterol" ${data.usuario[0].colesterol}>
+                        <label class="form-check-label" for="colesterol">
+                            Colesterol
+                        </label>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="form-row justify-content: space-around justify-content-center">
-                <div class="form-group col-md-8">
-                </div>
-              </div>
+            </div>
             </form>
           </div>
 
