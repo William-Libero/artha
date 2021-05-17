@@ -27,13 +27,17 @@ module.exports = app => {
     .get(ArthaController.loginPaciente())
     .post(ArthaController.editaPaciente());
 
-    app
+  app
     .route(rotasArtha.paciente_scanned)
     .get(ArthaController.pacienteScanned());
 
   app
   .route(rotasArtha.medico)
   .get(ArthaController.loginMedico())
+
+  app
+  .route(rotasArtha.admin)
+  .get(ArthaController.loginAdmin())
 
   app
   .route(rotasArtha.qrcodeUser)

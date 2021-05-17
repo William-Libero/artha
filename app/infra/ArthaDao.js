@@ -131,6 +131,17 @@ class ArthaDao{
         });
     }
 
+    getUsuarios(){
+        return new Promise ((resolve, reject) => {
+            pool.query("SELECT * FROM usuario",
+                (error, usuarios) => {
+                    if(error) return reject(console.log(error));
+                    return resolve(usuarios);
+                }
+            )
+        });
+    }
+
     getUsuario(id){
         return new Promise ((resolve, reject) => {
             pool.query("SELECT * FROM usuario WHERE id_usuario = ?", [id],
@@ -138,6 +149,17 @@ class ArthaDao{
                     if(error) return reject(console.log(error));
 
                     return resolve(usuario);
+                }
+            )
+        });
+    }
+
+    getMedicos(){
+        return new Promise ((resolve, reject) => {
+            pool.query("SELECT * FROM medico",
+                (error, medicos) => {
+                    if(error) return reject(console.log(error));
+                    return resolve(medicos);
                 }
             )
         });
@@ -165,7 +187,7 @@ class ArthaDao{
                         return reject('Não foi possível encontrar o usuário!');
                     }
                     JSON.stringify(usuario);
-                    if(usuario.length <= 0){
+                    if(usuario.length <= 0 && email != "admin@gmail.com"){
                         pool.query(
                             "SELECT * FROM medico WHERE email = ?",
                             [email],
@@ -173,6 +195,19 @@ class ArthaDao{
                                 if (erro) {
                                     return reject('Não foi possível encontrar o usuário!');
                                 }
+                                JSON.stringify(usuario);
+                                return resolve(usuario);
+                            }
+                        )
+                    }else if(usuario.length <= 0){
+                        pool.query(
+                            "SELECT * FROM admin WHERE email = ?",
+                            [email],
+                            (erro, usuario) => {
+                                if (erro) {
+                                    return reject('Não foi possível encontrar o usuário!');
+                                }
+                                console.log(usuario.email);
                                 JSON.stringify(usuario);
                                 return resolve(usuario);
                             }

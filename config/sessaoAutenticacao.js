@@ -17,30 +17,28 @@ module.exports = (app) => {
         (email, senha, done) => {
             const arthaDao = new ArthaDao();
             arthaDao.getUsuarioPeloEmail(email)
-                        .then(usuario => {
-                            if(usuario.length > 0){
-                                const match = bcrypt.compare(senha, usuario[0].senha);
-                                if (!usuario || match == false) {
-                                    return done(null, false, {
-                                        mensagem: 'Login ou senha incorretos!'
-                                    });
-                                }
-
-                                return done(null, usuario);
-                            }else{
-                                return done(null, usuario);
+                    .then(usuario => {
+                        if(usuario.length > 0){
+                            const match = bcrypt.compare(senha, usuario[0].senha);
+                            if (!usuario || match == false) {
+                                return done(null, false, {
+                                    mensagem: 'Login ou senha incorretos!'
+                                });
                             }
-                        })
-                        .catch(erro => done(erro, false));
+                            return done(null, usuario);
+                        }else{
+                            return done(null, usuario);
+                        }
+                    })
+                    .catch(erro => done(erro, false));
         }
     ));
 
     passport.serializeUser((usuario, done) => {
         const usuarioSessao = {
-            nome: usuario.nome_completo,
-            email: usuario.email
+            nome: usuario.nome_completo ? usuario.nome_completo : null,
+            email: usuario.email ? usuario.email : usuario['email']
         };
-
         done(null, usuarioSessao);
     });
 

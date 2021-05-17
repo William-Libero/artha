@@ -12,6 +12,7 @@ class arthaController {
       paciente: '/paciente/:id',
       paciente_scanned: '/paciente_scanned/:id',
       medico: '/medico/:id',
+      admin: '/admin',
       qrcodeUser: '/qrcodeUser'
     };
   }
@@ -89,11 +90,13 @@ class arthaController {
           if (erro) {
             return next(erro);
           }
-
-          if(usuario[0].id_usuario > 0){
+          
+          if(usuario != 'admin' && usuario[0].id_usuario > 0){
             return resp.redirect('/paciente/' + usuario[0].id_usuario);
-          }else if(usuario[0].id_medico > 0){
+          }else if(usuario != 'admin' && usuario[0].id_medico > 0){
             return resp.redirect('/medico/' + usuario[0].id_medico);
+          }else{
+            return resp.redirect('/admin');
           }
         });
       })(req, resp, next);
@@ -174,6 +177,32 @@ class arthaController {
           })
         )
         .catch(error => console.log(error));
+    };
+  }
+
+  loginAdmin() {
+    return (req, resp) => {
+      const arthaDao = new ArthaDao();
+      var medicosData = null;
+      var pacientesData = null;
+
+      arthaDao
+        .getMedicos()
+        .then(medicos => {
+          medicosData = medicos
+          arthaDao
+            .getUsuarios()
+            .then(pacientes => {
+              pacientesData = pacientes      
+              resp.marko(templates.artha.admin, {
+                medicosData,
+                pacientesData
+              });
+            })
+            .catch(error => console.log(error));
+        })
+        .catch(error => console.log(error));
+      
     };
   }
 

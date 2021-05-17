@@ -6,5 +6,6 @@ module.exports = {
     paciente: require('../views/paciente-recebe.marko'),
     paciente_scanned: require('../views/paciente-scanned.marko'),
     medico: require('../views/tabelas.marko'),
+    admin: require('../views/admin.marko'),
     qrcodeUser: require('../views/qrcodeUser.marko')
 } 
