@@ -133,7 +133,7 @@ class ArthaDao{
 
     getUsuarios(){
         return new Promise ((resolve, reject) => {
-            pool.query("SELECT * FROM usuario",
+            pool.query("SELECT nome, sobrenome, email, date_format(dt_nasc, '%d/%m/%Y') as dt_nasc FROM usuario ORDER BY id_usuario",
                 (error, usuarios) => {
                     if(error) return reject(console.log(error));
                     return resolve(usuarios);
@@ -156,7 +156,7 @@ class ArthaDao{
 
     getMedicos(){
         return new Promise ((resolve, reject) => {
-            pool.query("SELECT * FROM medico",
+            pool.query("SELECT nome, sobrenome, email, date_format(dt_nasc, '%d/%m/%Y') as dt_nasc FROM medico ORDER BY id_medico",
                 (error, medicos) => {
                     if(error) return reject(console.log(error));
                     return resolve(medicos);
