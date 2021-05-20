@@ -11,9 +11,11 @@ class arthaController {
       dashboard: '/dashboard/:id',
       paciente: '/paciente/:id',
       paciente_scanned: '/paciente_scanned/:id',
+      paciente_data: '/paciente_data/:id',
       medico: '/medico/:id',
       admin: '/admin',
-      qrcodeUser: '/qrcodeUser'
+      qrcodeUser: '/qrcodeUser',
+      vinculationUser: '/vinculationUser/:id'
     };
   }
 
@@ -172,9 +174,13 @@ class arthaController {
       arthaDao
         .getMedico(id)
         .then(medico =>
-          resp.marko(templates.artha.medico, {
-            medico
-          })
+          arthaDao
+            .getVinculacaoMedico(id)
+            .then(pacientesVinculados =>
+              resp.marko(templates.artha.medico, {
+                medico, pacientesVinculados
+              })
+            ).catch(error => console.log(error))
         )
         .catch(error => console.log(error));
     };
@@ -211,6 +217,46 @@ class arthaController {
       const arthaDao = new ArthaDao();
       const id = req.params.id;
       resp.marko(templates.artha.qrcodeUser);
+    };
+  }
+
+  vinculationUser(){
+    return (req, resp) => {
+      const arthaDao = new ArthaDao();
+      const id = req.params.id.split('&');
+      var idUsuario = id[0];
+      var idMedico = id[1];
+      arthaDao
+      .vinculaPacienteAoMedico(idMedico,idUsuario)
+      .then(usuario => { 
+        resp.redirect('/medico/' + idMedico);
+      }).catch(error => console.log(error));
+    }
+  }
+
+  pacienteData(){
+    return (req, resp) => {
+      const arthaDao = new ArthaDao();
+      const id = req.params.id;
+      arthaDao
+        .getUsuario(id)
+        .then(usuario => {
+          if(usuario[0].doencas_auto_adquiridas){
+            var doencas = usuario[0].doencas_auto_adquiridas.split(",");
+            usuario[0].hipertencao  = doencas[0] != 'undefined' ? 'checked' : '';
+            usuario[0].tabagismo    = doencas[1] != 'undefined' ? 'checked' : '';
+            usuario[0].estresse     = doencas[2] != 'undefined' ? 'checked' : '';
+            usuario[0].sedentarismo = doencas[3] != 'undefined' ? 'checked' : '';
+            usuario[0].diabetes     = doencas[4] != 'undefined' ? 'checked' : '';
+            usuario[0].colesterol   = doencas[5] != 'undefined' ? 'checked' : '';
+          }
+          
+          resp.marko(templates.artha.paciente_data, {
+            usuario
+          })
+        }
+        )
+        .catch(error => console.log(error));
     };
   }
 }

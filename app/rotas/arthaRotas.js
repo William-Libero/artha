@@ -43,5 +43,13 @@ module.exports = app => {
   .route(rotasArtha.qrcodeUser)
   .get(ArthaController.qrcodeUser())
 
+  app
+  .route(rotasArtha.vinculationUser)
+  .get(ArthaController.vinculationUser())
+
+  app
+  .route(rotasArtha.paciente_data)
+  .get(ArthaController.pacienteData())
+
   app.get(rotasArtha.dashboard, ArthaController.redirecionaUserDepoisDoLogin());
 };

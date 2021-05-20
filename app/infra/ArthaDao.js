@@ -177,6 +177,30 @@ class ArthaDao{
         });
     }
 
+    getVinculacaoMedico(id){
+        return new Promise ((resolve, reject) => {
+            pool.query("SELECT user.id_usuario, user.nome, user.sobrenome, user.email, date_format(user.dt_nasc, '%d/%m/%Y') as dt_nasc FROM medico as md INNER JOIN vinculacao_user_doctor as vud ON vud.id_medico = md.id_medico INNER JOIN usuario as user ON user.id_usuario = vud.id_usuario WHERE md.id_medico = ?", [id],
+                (error, medico) => {
+                    if(error) return reject(console.log(error));
+                    
+                    return resolve(medico);
+                }
+            )
+        })
+    }
+
+    vinculaPacienteAoMedico(idMedico, idUsuario){
+        return new Promise ((resolve, reject) => {
+            pool.query('INSERT INTO vinculacao_user_doctor (`id_usuario`, `id_medico`) VALUES (?, ?)', [idUsuario, idMedico],
+                (error, medico) => {
+                    if(error) return reject(console.log(error));
+
+                    return resolve(medico);
+                }
+            )
+        })
+    }
+
     getUsuarioPeloEmail(email) {
         return new Promise((resolve, reject) => {
             pool.query(
