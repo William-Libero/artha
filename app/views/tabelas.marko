@@ -135,10 +135,6 @@
        <div>
 
         <div class="container-fluid">
-      
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-
             <!-- DataTales Example -->
             <if(data.pacientesVinculados[0])>
             <div class="card shadow mb-4">
@@ -162,7 +158,7 @@
                             <td class="text-center pt-3">${paciente.nome} ${paciente.sobrenome}</td>
                             <td class="text-center pt-3">${paciente.email}</td>
                             <td class="text-center pt-3">${paciente.dt_nasc}</td>
-                            <td class="d-flex justify-content-center align-items-center flex-column">
+                            <td class="text-center pt-3">
                               <a href='/paciente_data/${paciente.id_usuario}' target="_blank" class="btn btn-primary" style="background-color: #7c3bc0; border-color: #7c3bc0;" title="Clique para ver os dados do paciente">
                                 <i class="fas fa-user"></i>
                               </a>
@@ -177,7 +173,7 @@
             </if>
             <else>
               <div class="container d-flex justify-content-center align-items-center flex-column">
-                <h2 class="text-center">
+                <h2 class="text-center text-vinculation">
                   Você ainda não possui nenhum paciente vinculado.<br/>
                   Vincule um paciente agora mesmo:
                 </h2>
@@ -189,7 +185,6 @@
                 </div>
               </div>
             </else>
-          </div>
         </div>
       </div>
         <!-- /.container-fluid -->

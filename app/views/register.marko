@@ -45,21 +45,25 @@
         border-color: red;
     }
 
-    .card-personalizes-size{
-      height: 600px!important;
+    .right-side{
+      display: flex;
+      align-items: center;
+      padding: 0px;
     }
 
-    .right-side{
-      height: 600px;
-     display: flex;
-    align-items: center;
+    .container-forms{
+      padding-left: 3rem;
     }
 
    .title-names{
     text-align: center;
    }
     
-
+  @media screen and (max-width: 570px) {
+    .div-endereco {
+        margin-top: 1em;
+    }
+  }
 </style>
 
 <body class="bg-gradient-primary">
@@ -73,8 +77,7 @@
           <div class="col-lg-5 d-none d-lg-block right-side">
             <img class="artha-img" src="static/assets/img/artha-background.jpeg" alt="">
           </div>
-          <div class="col-lg-7 right-side">
-
+          <div class="col-lg-7 container-forms">
             <div class="p-2">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Criar uma conta!</h1>
@@ -100,7 +103,9 @@
               <div id="paciente-form">
                 <form class="user" action="" method="post">
                   <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="paciente">
-                  <h1>PACIENTE</h1>
+                  <div class="text-center">
+                    <h1>PACIENTE</h1>
+                  </div>
                   <div class="first-pass-user">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
@@ -148,7 +153,7 @@
                       <div class="col-sm-6">
                         <input type="text" class="form-control " id="cep" name="cep" required placeholder="CEP" onblur="recuperaCep();" onkeydown="mascara('#####-###',this,event,true)" maxlength="9">
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 div-endereco">
                         <p>Estado: <span data-js="UF" id="estadoUf" name="estadoUf"></span></p>
                         <input type="hidden" id="estadoUfPost" name="estadoUfPost">
                       </div>
@@ -165,8 +170,8 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <p>Endereço: <span data-js="" id="endereco" name="endereco"></span></p>
+                      <div class="col-sm-6 mb-sm-0">
+                        <p class="mb-0">Endereço: <span data-js="" id="endereco" name="endereco"></span></p>
                         <input type="hidden" id="enderecoPost" name="enderecoPost">
                       </div>
                     </div>
@@ -215,7 +220,9 @@
               <div id="medico-form">
                 <form class="doctor" action="" method="post">
                   <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="medico">
-                  <h1>MÉDICO</h1>
+                  <div class="text-center">
+                    <h1>MÉDICO</h1>
+                  </div>
                   <div class="first-pass-doctor">
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
@@ -260,7 +267,7 @@
                       <div class="col-sm-6">
                         <input type="text" class="form-control " id="cepMedico" name="cepMedico" placeholder="CEP" onblur="recuperaCepMedico(); mascara('#####-###',this,event,true);" onkeydown="mascara('#####-###',this,event,true)" maxlength="9">
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 div-endereco">
                         <p>Estado: <span data-js="UF" id="estadoUfMedico" name="estadoUfMedico"></span></p>
                         <input type="hidden" id="estadoUfMedicoPost" name="estadoUfMedicoPost" value="">
                       </div>
@@ -277,7 +284,7 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
+                      <div class="col-sm-6 mb-sm-0">
                         <p>Endereço: <span data-js="" id="enderecoMedico" name="enderecoMedico"></span></p>
                         <input type="hidden" id="enderecoMedicoPost" name="enderecoMedicoPost" value="">
                       </div>

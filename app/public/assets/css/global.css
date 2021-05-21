@@ -22,3 +22,21 @@
     border-radius: .2rem;
     font-weight: bold;
 }
+
+@media screen and (max-width: 770px) {
+    .text-vinculation {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    td {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .btn-call {
+        font-size: 0.7em;
+    }
+}
