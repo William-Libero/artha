@@ -42,3 +42,10 @@ CREATE TABLE `medico` (
   `senha` char(32) COLLATE latin1_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_medico`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+CREATE TABLE `vinculacao_user_doctor` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(4) NOT NULL,
+  `id_medico` int(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;

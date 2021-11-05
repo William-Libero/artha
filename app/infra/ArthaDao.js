@@ -2,10 +2,10 @@ const bcrypt = require('bcryptjs');
 var mysql = require('mysql');
 var pool  = mysql.createPool({
   connectionLimit : 10,
-  host: 'br182.hostgator.com.br',
-  user: 'evidence_dev',
-  password: 'evidence_dev1',
-  database: 'evidence_artha'
+  host: 'mysql.freehostia.com',
+  user: 'willib10_artha',
+  password: 'libero12',
+  database: 'willib10_artha'
 });
 
 class ArthaDao{
